@@ -23,6 +23,8 @@
   "homepage": "https://github.com/omelettech/Comp3123_Assignment1#readme",
   "description": "",
   "dependencies": {
-    "express": "^4.21.1"
+    "bcrypt": "^5.1.1",
+    "express": "^4.21.1",
+    "mongoose": "^8.7.1"
   }
 }
