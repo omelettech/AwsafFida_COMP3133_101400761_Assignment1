@@ -1,0 +1,28 @@
+{
+  "name": "assignment1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Awsaf Fida Mahmud",
+    "student_id": 101400761,
+    "email": "awsaffida.mahmud@georgebrown.ca",
+    "website": "https://www.afmahmud.dev"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omelettech/Comp3123_Assignment1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/omelettech/Comp3123_Assignment1/issues"
+  },
+  "homepage": "https://github.com/omelettech/Comp3123_Assignment1#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
