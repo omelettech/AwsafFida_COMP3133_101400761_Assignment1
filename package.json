@@ -15,12 +15,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omelettech/Comp3123_Assignment1.git"
+    "url": "git+https://github.com/omelettech/101400761-Comp3123_Assignment1.git"
   },
   "bugs": {
-    "url": "https://github.com/omelettech/Comp3123_Assignment1/issues"
+    "url": "https://github.com/omelettech/101400761-Comp3123_Assignment1/issues"
   },
-  "homepage": "https://github.com/omelettech/Comp3123_Assignment1#readme",
+  "homepage": "https://github.com/omelettech/101400761-Comp3123_Assignment1#readme",
   "description": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
