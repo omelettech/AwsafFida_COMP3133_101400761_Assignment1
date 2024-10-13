@@ -85,8 +85,8 @@ app.post("/api/v1/emp/employees", async (req, res) => {
 })
 app.get('/api/v1/emp/employees/:eid', async (req, res) => {
     try {
-        const { eid } = req.params;  // Extract employee ID from the URL
-        const employee = await Employee.findById(eid);  // Find employee by ID
+        const { eid } = req.params;
+        const employee = await Employee.findById(eid);
 
         if (!employee) {
             return res.status(404).json({ message: 'Employee not found' });
@@ -137,7 +137,7 @@ app.delete('/api/v1/emp/employees', async (req, res) => {
         }
 
 
-        return res.status(204).send();  // Successful deletion, no content
+        return res.status(204).json({message:"employee deleted successfully"});
     } catch (error) {
         console.error('Error deleting employee:', error);
         return res.status(500).json({ message: 'Internal server error' });
