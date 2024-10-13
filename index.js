@@ -9,6 +9,7 @@ const port = 3000;
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
+
 //User management
 app.post("/api/v1/user/signup", async (req, res) => {
     const {username, email, password} = req.body
@@ -53,6 +54,8 @@ app.post('api/v1/user/login', async (req, res) => {
         return res.status(500).json({message: 'Internal server error.'});
     }
 })
+
+
 //Employee management
 
 app.get("/api/v1/emp/employees", async (req, res) => {
