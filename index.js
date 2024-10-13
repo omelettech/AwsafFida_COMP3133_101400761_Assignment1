@@ -80,9 +80,66 @@ app.post("/api/v1/emp/employees", async (req, res) => {
 
 
 })
-// app.get("/api/v1/emp/employees", (req, res) => {
-//
-// })
+app.get('/api/v1/emp/employees/:eid', async (req, res) => {
+    try {
+        const { eid } = req.params;  // Extract employee ID from the URL
+        const employee = await Employee.findById(eid);  // Find employee by ID
+
+        if (!employee) {
+            return res.status(404).json({ message: 'Employee not found' });
+        }
+
+        // Send employee data
+        return res.status(200).json(employee);
+    } catch (error) {
+        console.error('Error fetching employee:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+app.put('/api/v1/emp/employees/:eid', async (req, res) => {
+    try {
+        const { eid } = req.params;  // Extract employee ID from the URL
+        const { name, position, department, salary } = req.body;
+
+        // Find the employee by ID and update
+        const updatedEmployee = await Employee.findByIdAndUpdate(
+            eid,
+            { name, position, department, salary },
+            { new: true }
+        );
+
+        if (!updatedEmployee) {
+            return res.status(404).json({ message: 'Employee not found' });
+        }
+
+        // Send updated employee data
+        return res.status(200).json({
+            message: 'Employee updated successfully',
+            employee: updatedEmployee
+        });
+    } catch (error) {
+        console.error('Error updating employee:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+app.delete('/api/v1/emp/employees', async (req, res) => {
+    try {
+        const { eid } = req.query;
+
+        // Find employee by ID and delete
+        const deletedEmployee = await Employee.findByIdAndDelete(eid);
+
+        if (!deletedEmployee) {
+            return res.status(404).json({ message: 'Employee not found' });
+        }
+
+
+        return res.status(204).send();  // Successful deletion, no content
+    } catch (error) {
+        console.error('Error deleting employee:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 app.listen(port, () => {
     console.log(`http://localhost:${port}`);
