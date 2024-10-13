@@ -31,7 +31,7 @@ app.post("/api/v1/user/signup", async (req, res) => {
         return res.status(500).json({message: "Error creating user"})
     }
 })
-app.post('api/v1/user/login', async (req, res) => {
+app.post('/api/v1/user/login', async (req, res) => {
     const {email, password} = req.body
     if (!(email && password)) {
         //Checks if all 3 fields are filled
@@ -68,8 +68,8 @@ app.post("/api/v1/emp/employees", async (req, res) => {
         return res.status(400).json({message: 'all fields required'});
     }
     try{
-        if(Employee.findOne({email})){
-            return res.status(409).json({message: 'User with this email already exists.'});
+        if(await Employee.findOne({email})){
+            return res.status(409).json({message: 'employee with this email already exists.'});
         }else{
             const newEmp = new Employee({first_name, last_name, email, position, salary, date_of_joining, department})
             await newEmp.save()
