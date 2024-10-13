@@ -1,6 +1,7 @@
 const express = require("express")
 const path = require('path');
-const User=require('./User')
+const User = require('./models/User')
+const Employee = require("./models/Employee")
 const bcrypt = require("bcrypt");
 
 const hostname = 'localhost';
@@ -11,22 +12,22 @@ app.use(express.json());
 //User management
 app.post("/api/v1/user/signup", async (req, res) => {
     const {username, email, password} = req.body
-    if (!(username && email && password)){
-            //Checks if all 3 fields are filled
-            return res.status(400).json({ message: 'Email username must be unique AND all 3 fields required' });
+    if (!(username && email && password)) {
+        //Checks if all 3 fields are filled
+        return res.status(400).json({message: 'Email username must be unique AND all 3 fields required'});
 
     }
     try {
         if (await User.findOne({email})) {
-            return  res.status(409).json({ message: 'User with this email already exists.' });
-        }else{
-            const newUser = new User({username,email,password})
+            return res.status(409).json({message: 'User with this email already exists.'});
+        } else {
+            const newUser = new User({username, email, password})
             await newUser.save();
-            return res.status(201).json({ message: 'User created successfully!' });
+            return res.status(201).json({message: 'User created successfully!'});
         }
-    }catch (err){
+    } catch (err) {
         console.error(err)
-        return res.status(500).json({message:"Error creating user"})
+        return res.status(500).json({message: "Error creating user"})
     }
 })
 app.post('api/v1/user/login', async (req, res) => {
@@ -36,23 +37,49 @@ app.post('api/v1/user/login', async (req, res) => {
         return res.status(400).json({message: 'all fields required'});
     }
     try {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({email});
         if (!user) {
-            return res.status(401).json({ message: 'Invalid email or password.' });
+            return res.status(401).json({message: 'Invalid email or password.'});
         }
-        if(!(await bcrypt.compare(password, user.password))){
+        if (!(await bcrypt.compare(password, user.password))) {
             //match password with database pass
-            return res.status(401).json({ message: 'Invalid email or password.' });
+            return res.status(401).json({message: 'Invalid email or password.'});
         }
         // If login is successful
-        return res.status(200).json({ message: 'Login successful!' });
+        return res.status(200).json({message: 'Login successful!'});
 
-    }catch (err) {
+    } catch (err) {
         console.error('Error during login:', err);
-        return res.status(500).json({ message: 'Internal server error.' });
+        return res.status(500).json({message: 'Internal server error.'});
     }
 })
 //Employee management
+
+app.get("/api/v1/emp/employees", async (req, res) => {
+    let employees = await Employee.find()
+    return res.status(200).json(employees)
+})
+app.post("/api/v1/emp/employees", async (req, res) => {
+    const {first_name, last_name, email, position, salary, date_of_joining, department} = req.body
+    if (!first_name || !last_name || !email || !position || !salary) {
+        return res.status(400).json({message: 'all fields required'});
+    }
+    try{
+        if(Employee.findOne({email})){
+            return res.status(409).json({message: 'User with this email already exists.'});
+        }else{
+            const newEmp = new Employee({first_name, last_name, email, position, salary, date_of_joining, department})
+            await newEmp.save()
+            return res.status(201).json(newEmp)
+        }
+    }catch (e){
+        console.error(e)
+        return res.status(500).json({ message: 'Internal server error' });
+
+    }
+
+
+})
 // app.get("/api/v1/emp/employees", (req, res) => {
 //
 // })
