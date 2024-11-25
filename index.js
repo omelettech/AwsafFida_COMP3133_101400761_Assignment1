@@ -4,7 +4,7 @@ const User = require('./models/User')
 const Employee = require("./models/Employee")
 const bcrypt = require("bcrypt");
 
-const hostname = 'localhost';
+const hostname = 'https://101400761assign1.vercel.app';
 const port = 3000;
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')));
@@ -145,5 +145,5 @@ app.delete('/api/v1/emp/employees', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`http://localhost:${port}`);
+    console.log(`${hostname}:${port}`);
 });
