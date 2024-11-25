@@ -20,7 +20,7 @@ const EmployeeSchema = new mongoose.Schema({
     position: {type: String, required: true, trim: true},
     salary: {type: Number, required: true,},
     date_of_joining: {type: Date, required: true, default: Date.now()},
-    department: {type: String, enum: ["Devloper", "Desigining", "Sales", "Marketing"], default: "Developer"},
+    department: {type: String, default: "Developer"},
     createdAt: {
         type: Date,
         default: Date.now
