@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose').default;
 const bcrypt = require('bcrypt');
-const mongoUri = 'mongodb+srv://fidaawsaf:v5K4as3g3ALUcylX@comp3123.evhc4.mongodb.net/?retryWrites=true&w=majority&appName=comp3123';
+const mongoUri = process.env.MONGODB_URI;
 
 mongoose.connect(mongoUri)
     .then(() => console.log('MongoDB connected'))
