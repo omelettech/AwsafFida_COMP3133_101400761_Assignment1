@@ -10,6 +10,16 @@ const app = express()
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
+
+
+app.get('/', (req, res) => {
+    res.send('Hey this is my API running 🥳')
+})
+
+app.get('/about', (req, res) => {
+    res.send('routing works as well yay. I am awsaf btw')
+})
+
 //User management
 app.post("/api/v1/user/signup", async (req, res) => {
     const {username, email, password} = req.body
@@ -148,3 +158,4 @@ app.listen(port, () => {
     console.log(`API listening on PORT ${port} `)
 
 });
+module.exports = app
