@@ -145,5 +145,6 @@ app.delete('/api/v1/emp/employees', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`${hostname}`);
+    console.log(`API listening on PORT ${port} `)
+
 });
