@@ -11,6 +11,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 
+app.listen(port, () => {
+    console.log(`API listening on PORT ${port} `)
+
+});
 
 app.get('/', (req, res) => {
     res.send('Hey this is my API running 🥳')
@@ -154,8 +158,4 @@ app.delete('/api/v1/emp/employees', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`API listening on PORT ${port} `)
-
-});
 module.exports = app
