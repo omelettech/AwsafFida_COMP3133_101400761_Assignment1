@@ -5,7 +5,7 @@ const Employee = require("./models/Employee")
 const bcrypt = require("bcrypt");
 
 const hostname = 'https://comp3123-assignment1.vercel.app';
-const port = 8000;
+const port =4000;
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
