@@ -158,5 +158,5 @@ app.delete('/api/v1/emp/employees', async (req, res) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 });
-app.use('/route')
+// app.use('/route')
 module.exports = app
