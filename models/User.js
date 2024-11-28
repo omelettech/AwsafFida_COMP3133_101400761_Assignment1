@@ -3,7 +3,7 @@ const mongoose = require('mongoose').default;
 const bcrypt = require('bcrypt');
 mongoose.set('strictQuery', false);
 // const mongoUri = process.env.MONGODB_URI;
-const mongoUri="mongodb+srv://vercel-admin-user:comp3123@cluster0.evhc4.mongodb.net/?retryWrites=true&w=majority&appName=comp3123"
+const mongoUri="mongodb+srv://vercel-admin-user:comp3123@comp3123.evhc4.mongodb.net/?retryWrites=true&w=majority&appName=comp3123"
 mongoose.connect(mongoUri)
     .then(() => console.log('MongoDB user connected'))
     .catch(err => console.error('MongoDB user connection error:', err));
