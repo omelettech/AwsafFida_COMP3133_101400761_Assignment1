@@ -1,6 +1,6 @@
 const mongoose = require('mongoose').default;
-const mongoUri = process.env.MONGODB_URI;
-// const mongoUri="mongodb+srv://fidaawsaf:v5K4as3g3ALUcylX@comp3123.evhc4.mongodb.net/?retryWrites=true&w=majority&appName=comp3123"
+// const mongoUri = process.env.MONGODB_URI;
+const mongoUri="mongodb+srv://fidaawsaf:comp3123@cluster0.evhc4.mongodb.net/?retryWrites=true&w=majority&appName=comp3123"
 mongoose.set('strictQuery', false);
     mongoose.connect(mongoUri)
         .then(() => console.log('MongoDB connected'))

@@ -2,8 +2,8 @@
 const mongoose = require('mongoose').default;
 const bcrypt = require('bcrypt');
 mongoose.set('strictQuery', false);
-const mongoUri = process.env.MONGODB_URI;
-// const mongoUri="mongodb+srv://fidaawsaf:v5K4as3g3ALUcylX@comp3123.evhc4.mongodb.net/?retryWrites=true&w=majority&appName=comp3123"
+// const mongoUri = process.env.MONGODB_URI;
+const mongoUri="mongodb+srv://fidaawsaf:comp3123@cluster0.evhc4.mongodb.net/?retryWrites=true&w=majority&appName=comp3123"
 mongoose.connect(mongoUri)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
