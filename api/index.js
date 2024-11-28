@@ -4,7 +4,7 @@ const User = require('../models/User')
 const Employee = require("../models/Employee")
 const bcrypt = require("bcrypt");
 
-const hostname = 'https://comp3123-assignment1.vercel.app';
+// const hostname = 'https://comp3123-assignment1.vercel.app';
 const port =4000;
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')));
