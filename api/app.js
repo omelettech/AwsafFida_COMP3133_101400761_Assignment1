@@ -2,13 +2,12 @@ const express = require("express")
 const path = require('path');
 const User = require('../models/User')
 const Employee = require("../models/Employee")
-console.log(User,Employee)
 const bcrypt = require("bcrypt");
 
 // const hostname = 'https://comp3123-assignment1.vercel.app';
 // const port =4000;
 const app = express()
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 
