@@ -6,16 +6,16 @@ console.log(User,Employee)
 const bcrypt = require("bcrypt");
 
 // const hostname = 'https://comp3123-assignment1.vercel.app';
-const port =4000;
+// const port =4000;
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 
-app.listen(port, () => {
-    console.log(`API listening on PORT ${port} `)
-
-});
+// app.listen(port, () => {
+//     console.log(`API listening on PORT ${port} `)
+//
+// });
 
 app.get('/', (req, res) => {
     res.send('Hey this is my API running 🥳')
@@ -158,5 +158,5 @@ app.delete('/api/v1/emp/employees', async (req, res) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 });
-
+app.use('/route')
 module.exports = app
