@@ -3,8 +3,8 @@ const mongoose = require('mongoose').default;
 const mongoUri="mongodb+srv://vercel-admin-user:comp3123@cluster0.evhc4.mongodb.net/?retryWrites=true&w=majority&appName=comp3123"
 mongoose.set('strictQuery', false);
     mongoose.connect(mongoUri)
-        .then(() => console.log('MongoDB connected'))
-        .catch(err => console.error('MongoDB connection error:', err));
+        .then(() => console.log('MongoDB employees connected'))
+        .catch(err => console.error('MongoDB employee connection error:', err));
 
 //Schemas
 const EmployeeSchema = new mongoose.Schema({
