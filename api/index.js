@@ -19,7 +19,7 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.send('Hey this is my API running 🥳')
 })
-
+app.get('/favicon.ico', (req, res) => res.status(204));
 app.get('/about', (req, res) => {
     res.send('routing works as well yay. I am awsaf btw')
 })
