@@ -19,6 +19,9 @@ const EmployeeSchema = new mongoose.Schema({
             message: props => `${props.value} is not a valid email!`
         }
     },
+    gender:{type:String,enum : ['Male','Female','Others'],required:true,trim:true},
+    designation:{type:String,required:true,trim:true},
+
     position: {type: String, required: true, trim: true},
     salary: {type: Number, required: true,},
     date_of_joining: {type: Date, required: true, default: Date.now()},

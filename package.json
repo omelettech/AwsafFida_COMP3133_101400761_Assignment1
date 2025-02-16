@@ -24,10 +24,15 @@
   "homepage": "https://github.com/omelettech/101400761-Comp3123_Assignment1#readme",
   "description": "",
   "dependencies": {
+    "apollo-server-express": "^3.13.0",
     "bcrypt": "^5.1.1",
-    "express": "^4.21.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "graphql": "^16.10.0",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.11.0",
-    "mongoose": "^6.5.0 ",
+    "mongoose": "^6.13.8",
     "path": "^0.12.7"
   }
 }
