@@ -3,13 +3,26 @@ const path = require('path');
 const User = require('../models/User')
 const Employee = require("../models/Employee")
 const bcrypt = require("bcrypt");
+const {ApolloServer} = require("apollo-server-express");
+const typeDefs = require("./typeDefs");
+const resolvers = require("./resolvers");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 
 // const hostname = 'https://comp3123-assignment1.vercel.app';
 // const port =4000;
 const app = express()
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: ({ req }) => {
+        const token = req.headers.authorization || '';
+        return { token };
+    },
+});
 
 // app.listen(port, () => {
 //     console.log(`API listening on PORT ${port} `)
@@ -159,4 +172,22 @@ app.delete('/api/v1/emp/employees', async (req, res) => {
     }
 });
 // app.use('/route')
+async function startServer() {
+    await server.start();
+    server.applyMiddleware({ app });
+
+    mongoose.connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+        .then(() => console.log('MongoDB connected'))
+        .catch(err => console.log(err));
+
+    app.listen(process.env.PORT || 4000, () => {
+        console.log(`Server running at http://localhost:${process.env.PORT || 4000}${server.graphqlPath}`);
+    });
+}
+
+startServer();
+
 module.exports = app

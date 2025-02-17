@@ -8,8 +8,8 @@ mongoose.set('strictQuery', false);
 
 //Schemas
 const EmployeeSchema = new mongoose.Schema({
-    first_name: {type: String, unique: false, required: true},
-    last_name: {type: String, unique: false, required: true},
+    firstname: {type: String, unique: false, required: true},
+    lastname: {type: String, unique: false, required: true},
     email: {
         type: String, required: true, unique: true, trim: true,
         validate: {
@@ -20,7 +20,6 @@ const EmployeeSchema = new mongoose.Schema({
         }
     },
     gender:{type:String,enum : ['Male','Female','Others'],required:true,trim:true},
-    designation:{type:String,required:true,trim:true},
 
     position: {type: String, required: true, trim: true},
     salary: {type: Number, required: true,},
